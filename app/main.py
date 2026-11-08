@@ -27,7 +27,7 @@ def canvas():
     encoded_data = request.form['canvasimg'].split(',')[1]
 
     # Decode base64 image to python array
-    nparr = np.fromstring(base64.b64decode(encoded_data), np.uint8)
+    nparr = np.frombuffer(base64.b64decode(encoded_data), dtype=np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     # Convert 3 channel image (RGB) to 1 channel image (GRAY)
